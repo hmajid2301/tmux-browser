@@ -15,8 +15,8 @@ else
 	tmux set-hook -gu 'client-attached[8921]' "run-shell "$CURRENT_DIR/scripts/open_browser.sh""
 fi
 
-tmux set-hook -g 'client-session-changed[8921]' "run-shell "$CURRENT_DIR/scripts/save_and_close_browser.sh""
 tmux set-hook -g client-session-changed 'display-message "hi sess changed"'
+tmux set-hook -g client-session-changed "run-shell "$CURRENT_DIR/scripts/save_and_close_browser.sh""
 if [ "$(tmux_option "@browser_close_on_deattach" "1")" == "1" ]; then
 	cmd="$CURRENT_DIR/scripts/save_and_close_browser.sh \$(tmux display-message -p \#S)"
 	tmux set-hook -g 'client-session-changed[8921]' "run-shell '$cmd'"
