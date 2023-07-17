@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$CURRENT_DIR/helpers.sh"
 
 SESSIONS_DIR="$(sessions_dir)"
@@ -10,10 +10,8 @@ current_session=$(tmux display-message -p '#S')
 # Using localhost to don't query any web browser
 tab_id_name=localhost:1212/dont_close-tmux-browser_$current_session
 
-focus_tabid_window()
-{
-	if ! command -v wmctrl &> /dev/null
-	then
+focus_tabid_window() {
+	if ! command -v wmctrl &>/dev/null; then
 		return
 	fi
 
@@ -55,7 +53,8 @@ fi
 if [ -f "$SESSIONS_DIR/$current_session" ]; then
 	tmux display "Restoring from $SESSIONS_DIR/$current_session"
 	# Only opening http/s urls (about:new make bt stuck)
-	cat "$SESSIONS_DIR/$current_session" | grep "^http" | bt open $window_id &> /dev/null
+	tmux display "window id $window_id"
+	cat "$SESSIONS_DIR/$current_session" | grep "^http" | bt open $window_id &>/dev/null
 else
 	tmux display "New Browser Opened"
 fi
