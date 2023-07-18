@@ -53,7 +53,6 @@ fi
 if [ -f "$SESSIONS_DIR/$current_session" ]; then
 	tmux display "Restoring from $SESSIONS_DIR/$current_session"
 	# Only opening http/s urls (about:new make bt stuck)
-	tmux display "window id $window_id"
 	cat "$SESSIONS_DIR/$current_session" | grep "^http" | bt open $window_id &>/dev/null
 else
 	tmux display "New Browser Opened"
