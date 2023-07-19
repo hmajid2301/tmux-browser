@@ -7,7 +7,7 @@ tab_id_name=localhost:1212/dont_close-tmux-browser
 
 tmux display "abcd"
 bt_list=$($CURRENT_DIR/bt_list_wrapper.sh) || exit $?
-tmux display "bt_list $bt_list $tab_id_name"
+tmux display "bt_list $tab_id_name"
 if echo "$bt_list" | grep "$tab_id_name$"; then
 	tmux display "1297497913"
 	window_id=$(echo "$bt_list" | cut -f1,3 | grep "$tab_id_name$" | cut -f1,2 -d ".")
@@ -17,6 +17,6 @@ if echo "$bt_list" | grep "$tab_id_name$"; then
 
 	tab_ids=$(echo "$bt_list" | grep "$window_id\\." | cut -f1)
 
-	tmux display "TAB ID $tab_ids"
+	tmux display "TAB ID"
 	echo $tab_ids | bt close
 fi
