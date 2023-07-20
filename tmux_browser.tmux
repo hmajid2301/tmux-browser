@@ -16,7 +16,7 @@ else
 fi
 
 if [ "$(tmux_option "@browser_close_on_deattach" "1")" == "1" ]; then
-	cmd="$CURRENT_DIR/scripts/a.sh \$(tmux display-message -p \#S)"
+	cmd="$CURRENT_DIR/scripts/save_and_close_browser.sh \$(tmux display-message -p \#S)"
 	tmux set-hook -g client-session-changed "run-shell '$cmd'"
 	tmux set-hook -g 'client-detached[8921]' "run-shell '$cmd'"
 else
