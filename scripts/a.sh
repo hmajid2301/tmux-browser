@@ -5,7 +5,8 @@ CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 current_session=$1
 tab_id_name=localhost:1212/dont_close-tmux-browser
 
-tmux display "abcd"
+tmux display-message -p '#S'
+tmux display -p '#S'
 bt_list=$($CURRENT_DIR/bt_list_wrapper.sh) || exit $?
 if echo "$bt_list" | grep "$tab_id_name"; then
 	tmux display "1297497913"
