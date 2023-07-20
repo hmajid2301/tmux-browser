@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-tmux display "RUNNING"
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 current_session=$1
 tab_id_name=localhost:1212/dont_close-tmux-browser
 
+tmux display "$1"
 tmux display-message -p '#S'
 tmux display -p '#S'
 bt_list=$($CURRENT_DIR/bt_list_wrapper.sh) || exit $?
