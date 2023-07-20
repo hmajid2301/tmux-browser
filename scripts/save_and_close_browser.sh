@@ -4,8 +4,7 @@ CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 current_session=$1
 tab_id_name=localhost:1212/dont_close-tmux-browser_$current_session
 
-echo "TMUX_LESS=$1" >~/.tmux_browser
-tmux display-message -p "HELLO $TMUX_SESS"
+tmux display-message -p "HELLO $1"
 bt_list=$($CURRENT_DIR/bt_list_wrapper.sh) || exit $?
 if echo "$bt_list" | grep -q "$tab_id_name$"; then
 	window_id=$(echo "$bt_list" | cut -f1,3 | grep "$tab_id_name$" | cut -f1,2 -d ".")
@@ -16,4 +15,4 @@ if echo "$bt_list" | grep -q "$tab_id_name$"; then
 
 	echo $tab_ids | bt close
 fi
-export TMUX_SESS=$1
+tmux set-environment -g TMUX_PREV_SESSION=$1
