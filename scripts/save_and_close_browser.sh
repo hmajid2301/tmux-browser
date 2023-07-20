@@ -15,4 +15,4 @@ if echo "$bt_list" | grep -q "$tab_id_name$"; then
 
 	echo $tab_ids | bt close
 fi
-tmux set-environment -g TMUX_PREV_SESSION=$1
+tmux "set-environment -g TMUX_PREV_SESSION=$1"
