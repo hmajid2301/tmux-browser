@@ -2,7 +2,6 @@
 
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 current_session=$1
-#tmux display "abcd $current_session"
 tmux display-message -p '#S'
 tmux display -p '#S'
 tab_id_name=localhost:1212/dont_close-tmux-browser_$current_session
