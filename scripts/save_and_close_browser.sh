@@ -15,4 +15,5 @@ if echo "$bt_list" | grep -q "$tab_id_name$"; then
 
 	echo $tab_ids | bt close
 fi
+echo cat "TMUX_LESS=$1" >"~/.tmux_browser"
 export TMUX_SESS=$1
